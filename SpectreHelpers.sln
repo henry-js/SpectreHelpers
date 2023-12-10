@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SpectreHelpers", "src\SpectreHelpers.csproj", "{29CCC02F-8341-4306-B63E-87143D4D4053}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "build", "build\build.csproj", "{123B695E-E4E4-48AB-8C14-7D062E38938B}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{123B695E-E4E4-48AB-8C14-7D062E38938B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{123B695E-E4E4-48AB-8C14-7D062E38938B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{29CCC02F-8341-4306-B63E-87143D4D4053}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{29CCC02F-8341-4306-B63E-87143D4D4053}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{29CCC02F-8341-4306-B63E-87143D4D4053}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{29CCC02F-8341-4306-B63E-87143D4D4053}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
