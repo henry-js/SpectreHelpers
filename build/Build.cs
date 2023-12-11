@@ -7,6 +7,7 @@ using Nuke.Common.IO;
 using Nuke.Common.ProjectModel;
 using Nuke.Common.Tooling;
 using Nuke.Common.Tools.DotNet;
+using Nuke.Common.Tools.MinVer;
 using Nuke.Common.Utilities.Collections;
 using Serilog;
 using static Nuke.Common.EnvironmentInfo;
@@ -21,6 +22,8 @@ class Build : NukeBuild
     public AbsolutePath PackageDirectory { get; } = RootDirectory / "package";
     [Solution]
     private readonly Solution Solution;
+    [MinVer]
+    readonly MinVer MinVer;
     public static int Main() => Execute<Build>(x => x.Compile);
 
     [Parameter("Configuration to build - Default is 'Debug' (local) or 'Release' (server)")]
@@ -49,5 +52,15 @@ class Build : NukeBuild
         {
             DotNetTasks.DotNet($"build {Solution}");
         });
+
+
+
+    Target Print => _ => _
+        .Executes(() =>
+        {
+            Log.Information("MinVer = {Value}", MinVer.Version);
+        });
+
+
 
 }
