@@ -53,7 +53,17 @@ class Build : NukeBuild
             DotNetTasks.DotNet($"build {Solution}");
         });
 
-
+    Target Publish => _ => _
+        .After(Compile)
+        .Executes(() =>
+        {
+            SourceDirectory.GlobFiles("*.csproj")
+            .ForEach(proj =>
+            {
+                DotNetTasks.DotNet($"publish {proj} -o {PublishDirectory / MinVer.Version} --no-restore");
+            });
+            DotNetTasks.DotNet($"pack {Solution} -o {PackageDirectory / MinVer.Version} --no-restore");
+        });
 
     Target Print => _ => _
         .Executes(() =>
