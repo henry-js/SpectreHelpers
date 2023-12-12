@@ -62,13 +62,18 @@ class Build : NukeBuild
             {
                 DotNetTasks.DotNet($"publish {proj} -o {PublishDirectory / MinVer.Version} --no-restore");
             });
-            DotNetTasks.DotNet($"pack {Solution} -o {PackageDirectory / MinVer.Version} --no-restore");
+            DotNetTasks.DotNet($"pack {Solution} -o {PackageDirectory} --no-restore");
         });
 
     Target Print => _ => _
         .Executes(() =>
         {
-            Log.Information("MinVer = {Value}", MinVer.Version);
+            Log.Information("MinVer.Version = {Value}", MinVer.Version);
+            Log.Information("MinVer.MinVerPreRelease = {Value}", MinVer.MinVerPreRelease);
+            Log.Information("MinVer.MinVerPatch = {Value}", MinVer.MinVerPatch);
+            Log.Information("MinVer.AssemblyVersion = {Value}", MinVer.AssemblyVersion);
+            Log.Information("MinVer.Version = {Value}", MinVer.Version);
+            Log.Information("MinVer.Version = {Value}", MinVer.MinVerVersion);
         });
 
 

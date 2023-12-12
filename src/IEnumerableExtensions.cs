@@ -1,6 +1,5 @@
-using System.Collections;
+// using System.Collections;
 using System.Diagnostics;
-using System.Runtime.CompilerServices;
 using Spectre.Console;
 
 namespace SpectreHelpers;
@@ -48,9 +47,9 @@ public static class IEnumerableExtensions
 
         foreach (var prop in type.GetProperties())
         {
-            if (prop.PropertyType.GetInterfaces().Contains(typeof(IEnumerable)))
+            if (prop.PropertyType.GetInterfaces().Contains(typeof(IEnumerable<>)))
             {
-                value = (prop.GetValue(item) is IEnumerable itemValue) ? GetStringFromEnumerable(itemValue) : "";
+                value = (prop.GetValue(item) is IEnumerable<T> itemValue) ? GetStringFromEnumerable(itemValue) : "";
             }
             else
             {
@@ -61,14 +60,14 @@ public static class IEnumerableExtensions
         return strings;
     }
 
-    private static string GetStringFromEnumerable(IEnumerable enumerable)
+    private static string GetStringFromEnumerable<T>(IEnumerable<T> enumerable)
     {
         var output = "{ ";
         output += CastEnumerable(enumerable);
 
         return output += " }";
 
-        string CastEnumerable(IEnumerable enumerable) => enumerable switch
+        string CastEnumerable(IEnumerable<T> enumerable) => enumerable switch
         {
             IEnumerable<Char> c => string.Join(", ", c),
             _ => "",
