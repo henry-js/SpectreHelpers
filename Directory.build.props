@@ -1,0 +1,8 @@
+<Project>
+  <PropertyGroup>
+    <Authors>henry-js</Authors>
+    <RepositoryUrl>https://github.com/henry-js/SpectreHelpers</RepositoryUrl>
+    <PackageProjectUrl>https://github.com/henry-js/SpectreHelpers</PackageProjectUrl>
+    <PackageLicense>https://github.com/henry-js/SpectreHelpers/blob/main/LICENSE</PackageLicense>
+  </PropertyGroup>
+</Project>
