@@ -65,6 +65,23 @@ class Build : NukeBuild
             DotNetTasks.DotNet($"pack {Solution} -o {PackageDirectory} --no-restore");
         });
 
+    Target Pack => _ => _
+        .After(Compile)
+        .Executes(() =>
+        {
+            DotNetTasks.DotNetPack(_ => _
+                .SetProject(Solution.GetProject("SpectreHelpers"))
+                .SetConfiguration(Configuration.Release)
+                .EnableNoBuild()
+                .EnableNoRestore()
+                .SetPackageId($"SpectreHelpers.{MinVer.Version}")
+                .SetDescription("Small library of extension methods for Spectre.Console")
+                .SetPackageTags("spectre.console")
+                .SetAuthors("henry-js")
+                .SetPackageProjectUrl("https://github.com/henry-js/SpectreHelpers")
+            );
+        });
+
     Target Print => _ => _
         .Executes(() =>
         {
